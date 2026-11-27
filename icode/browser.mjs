@@ -19,7 +19,7 @@ try {
  await page.locator('button.exercise').first().waitFor();assert.equal(await page.locator('button.exercise').count(),13);
  for(let index=0;index<13;index++){
   await page.locator('button.exercise').nth(index).click();
-  await page.getByRole('heading',{level:1}).waitFor();
+  await page.locator('.heading h1').waitFor();
   await page.locator('.lesson-panel').getByText('Exercise introduction',{exact:true}).waitFor();
  }
  evidence.push('All 13 lessons navigate with introduction and wrap-up documents');
@@ -47,5 +47,6 @@ try {
  console.log(evidence.join('\n'));
 } catch(error) {
  await writeFile('acceptance-results/browser-error.txt',error.stack||error.message);
+ if (browser) { for (const context of browser.contexts()) for (const page of context.pages()) await writeFile('acceptance-results/page-state.txt',(await page.locator('body').innerText()).replace(/MCP_PROXY_AUTH_TOKEN=[^&\s]+/g,'MCP_PROXY_AUTH_TOKEN=REDACTED')); }
  throw error;
 } finally {await browser?.close();if(child.exitCode===null&&child.signalCode===null)child.kill('SIGTERM');await closed;}

@@ -5,7 +5,7 @@ import { pathToFileURL,fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 const root=resolve(dirname(import.meta.url));
 function dirname(url){return fileURLToPath(new URL('../',url));}
-const engine=resolve(process.env.ICODE_ENGINE_DIR||join(root,'.icode/engine'));
+const engine=resolve(root,process.env.ICODE_ENGINE_DIR||'.icode/engine');
 const get=p=>import(pathToFileURL(join(engine,p)));
 const {discoverSteps}=await get('packages/core/layout.mjs');
 const {lessonDocuments}=await get('packages/web/lessons.mjs');

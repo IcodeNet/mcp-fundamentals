@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const engine=resolve(process.env.ICODE_ENGINE_DIR||join(root,'.icode/engine'));
+const engine=resolve(root,process.env.ICODE_ENGINE_DIR||'.icode/engine');
 const command=process.argv[2]||'start';
 function run(cmd,args,cwd) {const r=spawnSync(cmd,args,{cwd,stdio:'inherit',shell:false});if(r.error)throw r.error;if(r.status!==0)throw new Error(`${cmd} exited ${r.status}`);}
 if(command==='setup'&&!existsSync(join(engine,'package.json'))) {
