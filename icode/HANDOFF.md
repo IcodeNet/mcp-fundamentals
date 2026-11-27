@@ -20,21 +20,17 @@ This includes setup, original source-integrity checks, all 26 variant outcomes m
 
 Original baseline is pinned to `9a5336cc825ae7f502bad57dcd3c89eb362bfe9b`: 13 failing starters and 13 passing solutions. Actual exported evidence is committed in `icode/baseline-results.json` and `icode/baseline-evidence.json`. Do not regenerate it unnecessarily.
 
-## This follow-up commit
+## Final acceptance checks
 
-Adds two acceptance checks that were previously uncommitted:
+Two further checks were added in `4ac836c`; its browser check failed because no lesson is selected on first load. `eec9537` selects lesson 01 first and polls the editor after reload. That commit passed the full workflow:
+https://github.com/IcodeNet/mcp-fundamentals/actions/runs/46012472406
 
-1. `icode/acceptance.mjs`: reject any retained Epic workshop engine packages in the course lockfile.
-2. `icode/browser.mjs`: click the lesson file link, simulate an external editor change, reload it into the browser and restore the saved file.
+1. `icode/acceptance.mjs`: the course lockfile contains no Epic workshop engine packages.
+2. `icode/browser.mjs`: the lesson `src/index.ts` link opens the persistent playground file, an external edit appears after "Reload file", and the saved file is restored.
 
-Both scripts passed syntax checks and the diff passed whitespace checks before pushing. These additions need their own final-commit CI confirmation; the green run above precedes them.
+## Status
 
-## Next actions
-
-1. Check CI for the current course PR head. Fix any failures without weakening original assertions.
-2. Update both draft PR descriptions with final SHAs, exact evidence and remaining boundaries. Their current descriptions still say acceptance is pending.
-3. Confirm clean checkouts and that the course still pins the verified engine commit.
-4. Report completion on these feature branches. Do not claim merge or publication.
+Acceptance is complete on the feature branches. Both PRs stay draft and unmerged until explicitly authorised. Any further change must keep the full workflow green and must not weaken original assertions.
 
 ## Boundaries and tooling
 
