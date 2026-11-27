@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "mcp-dev",
+    "dev": "node ../../../icode/inspect.mjs",
     "dev:mcp": "tsx src/index.ts",
     "test": "vitest",
     "typecheck": "tsc",
@@ -16,7 +16,6 @@
   },
   "devDependencies": {
     "@epic-web/config": "^1.21.3",
-    "@epic-web/mcp-dev": "*",
     "@faker-js/faker": "^10.1.0",
     "@modelcontextprotocol/inspector": "^0.17.5",
     "@types/node": "^24.10.1",

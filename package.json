@@ -1,60 +1,25 @@
 {
   "name": "mcp-fundamentals",
   "private": true,
-  "epicshop": {
-    "title": "MCP Fundamentals 🧱",
-    "subtitle": "Meet users in the AI apps they already use",
-    "githubRepo": "https://github.com/epicweb-dev/mcp-fundamentals",
-    "instructor": {
-      "name": "Kent C. Dodds",
-      "avatar": "/images/instructor.png",
-      "𝕏": "kentcdodds"
-    },
-    "stackBlitzConfig": {
-      "view": "editor",
-      "terminalHeight": "0",
-      "hidedevtools": "1",
-      "hideNavigation": "1"
-    },
-    "onboardingVideo": "https://www.epicai.pro/get-started-with-epic-ai-workshops",
-    "product": {
-      "slug": "mcp-fundamentals-mtezq",
-      "host": "www.epicai.pro",
-      "displayName": "EpicAI.pro",
-      "displayNameShort": "Epic AI",
-      "discordChannelId": "1446549245246177371",
-      "discordTags": [
-        "1446550493949198457",
-        "1446550030180814888"
-      ]
-    }
-  },
   "type": "module",
   "scripts": {
-    "postinstall": "cd ./epicshop && pkgmgr install",
-    "start": "pkgmgrx --prefix ./epicshop epicshop start",
-    "dev": "pkgmgrx --prefix ./epicshop epicshop start",
-    "update": "npx --prefix ./epicshop epicshop update",
-    "dev:mcp": "node ./epicshop/run.js",
-    "inspect": "npx @kentcdodds/tmp-modelcontextprotocol_inspector",
-    "test": "pkgmgr run test --silent --prefix playground",
-    "test:e2e": "pkgmgr run test:e2e --silent --prefix playground",
-    "test:e2e:dev": "pkgmgr run test:e2e:dev --silent --prefix playground",
-    "test:e2e:run": "pkgmgr run test:e2e:run --silent --prefix playground",
-    "setup": "pkgmgrx epicshop setup",
-    "setup:custom": "node ./epicshop/setup-custom.js",
     "lint": "eslint . --concurrency=auto",
     "format": "prettier --write .",
     "typecheck": "tsc -b",
-    "validate:all": "npm-run-all --parallel --print-label --print-name --continue-on-error test:all lint typecheck"
+    "setup": "node icode/run.mjs setup",
+    "doctor": "node icode/run.mjs doctor",
+    "start": "node icode/run.mjs start",
+    "dev": "node icode/run.mjs start",
+    "test": "node icode/acceptance.mjs",
+    "dev:mcp": "node icode/run.mjs mcp",
+    "inspect": "node icode/run.mjs inspect"
   },
   "keywords": [],
   "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/)",
   "license": "GPL-3.0-only",
   "workspaces": [
     "exercises/*/*",
-    "examples/*",
-    "epicshop/mcp-dev"
+    "examples/*"
   ],
   "engines": {
     "node": ">=22.13.0",
@@ -72,7 +37,8 @@
     "eslint": "^9.39.1",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3",
-    "pkgmgr": "^1.1.1"
+    "pkgmgr": "^1.1.1",
+    "@playwright/test": "1.65.1"
   },
   "prettier": "@epic-web/config/prettier"
 }
