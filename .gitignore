@@ -24,3 +24,8 @@ data.db
 db.sqlite
 
 saved-playgrounds
+
+.icode/
+.workshop/
+node_modules/
+acceptance-results/

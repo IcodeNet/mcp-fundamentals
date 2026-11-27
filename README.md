@@ -1,113 +1,47 @@
-<div>
-  <h1 align="center"><a href="https://www.epicai.pro/">MCP Fundamentals 🧱</a></h1>
-  <strong>
-    Meet users in the AI apps they already use
-  </strong>
-  <p>
-    Your users are increasingly getting accustomed to using natural language to communicate with AI apps like ChatGPT, Claude Desktop, and Cursor. With MCP,
-    you can build AI-powered apps that integrate with these apps, allowing you
-    to meet users where they are.
-  </p>
-</div>
+# MCP Fundamentals — Icode Workshop host
 
-<hr />
+Kent C. Dodds's MCP Fundamentals course, hosted by Icode Workshop on this branch. The original lesson MDX, starter and solution TypeScript, and assessment assertions are preserved. Epic workshop engine packages have been removed; this branch uses a pinned Icode engine source checkout.
 
-<div align="center">
-  <a
-    alt="Epic Web logo with the words Deployed Version"
-    href="https://mcp-fundamentals.epicai.pro/"
-  >
-    <img
-      width="300px"
-      src="https://github-production-user-asset-6210df.s3.amazonaws.com/1500684/254000390-447a3559-e7b9-4918-947a-1b326d239771.png"
-    />
-  </a>
-</div>
+## Start learning
 
-<hr />
+Prerequisites: Git 2.18+, Node.js 24 LTS (course minimum 22.13), npm 8.16+, and Corepack with pnpm 10. Install Corepack separately if your Node distribution does not include it. No AI provider key is required for local assessments or Inspector.
 
-<!-- prettier-ignore-start -->
-[![Build Status][build-badge]][build]
-[![GPL 3.0 License][license-badge]][license]
-[![Code of Conduct][coc-badge]][coc]
-<!-- prettier-ignore-end -->
-
-## Prerequisites
-
-- JavaScript/TypeScript experience
-- Node.js experience
-
-## Pre-workshop Resources
-
-Here are some resources you can read before taking the workshop to get you up to
-speed on some of the tools and concepts we'll be covering:
-
-- [Letting AI Interface with Your App with MCPs](https://www.epicai.pro/letting-ai-interface-with-your-app-with-mcps-talk)
-- [MCP Introduction](https://modelcontextprotocol.io/introduction)
-- [Your AI Assistant Instructor: The EpicShop MCP Server](https://www.epicai.pro/your-ai-assistant-instructor-the-epicshop-mcp-server-0eazr)
-- [How to Debug Your MCP Server](https://www.epicai.pro/how-to-debug-your-mcp-server-38qyl)
-- [MCP Tool Design: From APIs to AI-First Interfaces](https://useai.substack.com/p/mcp-tool-design-from-apis-to-ai-first)
-
-## System Requirements
-
-- [git][git] v2.18 or greater
-- [NodeJS][node] v22.13.0 or greater
-- [npm][npm] v8.16.0 or greater
-
-All of these must be available in your `PATH`. To verify things are set up
-properly, you can run this:
-
-```shell
-git --version
-node --version
-npm --version
+```sh
+git clone --branch feat/icode-workshop-host https://github.com/IcodeNet/mcp-fundamentals.git
+cd mcp-fundamentals
+npm run setup
+npm run doctor
+npm start
 ```
 
-If you have trouble with any of these, learn more about the PATH environment
-variable and how to fix it here for [windows][win-path] or
-[mac/linux][mac-path].
+Open http://127.0.0.1:5173. Setup checks out the engine commit recorded in `icode/engine.json`, installs locked dependencies and creates the first persistent playground. Repeating setup preserves existing learner work. `ICODE_ENGINE_DIR` can point to an existing engine checkout for development.
 
-## Setup
+Select a lesson, open Playground, edit and save, then Run tests. Starters are intentionally incomplete. Problem and Solution tests/previews use disposable copies. Use Solution → Preview → Start app to inspect a working reference. In MCP Inspector, click Connect. Use Stop app before switching to unrelated tools.
 
-Use the Epic Workshop CLI to get this setup:
+All 13 steps are mapped in order across ping, tools, resources, resource tools and prompts. Course/exercise introductions, solution explanations and wrap-ups remain available in the lesson panel. Original videos open at their author's site and may require authorised access; they are not bundled or claimed to play offline. Declarative MDX is adapted to Markdown, not executed as arbitrary JSX. Mermaid source remains readable in fenced blocks.
 
-```sh nonumber
-npx --yes epicshop@latest add mcp-fundamentals
+## Persistent work and external clients
+
+Saved files and backups live under `.workshop/`. Progress is local and self-reported. Reset saves the current workspace in a backup; Restore Backup recovers its saved files and database. Reload file reads changes made in your external editor and asks before discarding unsaved browser edits.
+
+To run a completed learner playground as a stdio MCP server:
+
+```sh
+node icode/run.mjs mcp 01
 ```
 
-To make sure your environment is running correctly, please follow these
-additional steps:
+Use `node` and absolute arguments `[/absolute/path/to/course/icode/run.mjs, mcp, 01]` in your MCP client's stdio configuration. The host does not connect an external assistant automatically. `npm run inspect -- 01` opens the Inspector service for that playground; a starter cannot connect successfully until implemented.
 
-1. Run the workshop app with `npm start`
-2. Open the last exercise solution at
-   [`/exercise/05/02/solution?preview=solution`](http://localhost:5639/exercise/05/02/solution?preview=solution)
-3. Click the "Start App" button
-4. Click the "Connect" button
+## Acceptance evidence
 
-You'll know it's working if you see a green dot and the word "Connected" in the
-MCP Inspector app.
+The original pinned course is `9a5336cc825ae7f502bad57dcd3c89eb362bfe9b`. [Baseline CI](https://github.com/IcodeNet/mcp-fundamentals/actions/runs/46006634853) established 13 failing starters and 13 passing solutions. The exact exported outcomes and provenance are in `icode/baseline-results.json` and `icode/baseline-evidence.json`.
 
-If you experience errors during this setup process, please open [an
-issue][issue] with as many details as you can offer.
+`npm test` runs all original assessments through Icode and compares these outcomes, checks all 38 instructional documents, protects authored sources and verifies learner editing, reset/restore and progress. Set `BASELINE_RESULTS=icode/baseline-results.json` when running it outside CI. The [course acceptance workflow](.github/workflows/validate.yml) also runs real browser/Inspector navigation and owned-process cleanup. Check its final commit result before treating this branch as accepted; successful baseline tests alone are not Icode compatibility evidence.
 
-## The Workshop App
+To reproduce the baseline, check out the pinned original in a separate directory, run `npm install --ignore-scripts`, then run `icode/baseline.mjs` with the original directory, output JSON path and absolute npm-cli.js path. The original lockfile was inconsistent with the registry-resolved dependency graph, so baseline installation refreshed it without changing course code or tests.
 
-Learn all about the workshop app on the
-[Epic Web Getting Started Guide](https://www.epicweb.dev/get-started).
+## Scope and attribution
 
-[![Kent with the workshop app in the background](https://github-production-user-asset-6210df.s3.amazonaws.com/1500684/280407082-0e012138-e01d-45d5-abf2-86ffe5d03c69.png)](https://www.epicweb.dev/get-started)
+This establishes compatibility for this course; it does not claim every Epic feature. It does not include Epic's account system, offline media or entitlement management. Code runs with your local permissions; use trusted course repositories.
 
-<!-- prettier-ignore-start -->
-[npm]: https://www.npmjs.com/
-[node]: https://nodejs.org
-[git]: https://git-scm.com/
-[build-badge]: https://img.shields.io/github/actions/workflow/status/epicweb-dev/mcp-fundamentals/validate.yml?branch=main&logo=github&style=flat-square
-[build]: https://github.com/epicweb-dev/mcp-fundamentals/actions?query=workflow%3Avalidate
-[license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
-[license]: https://github.com/epicweb-dev/mcp-fundamentals/blob/main/LICENSE
-[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://kentcdodds.com/conduct
-[win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
-[mac-path]: http://stackoverflow.com/a/24322978/971592
-[issue]: https://github.com/epicweb-dev/mcp-fundamentals/issues/new
-<!-- prettier-ignore-end -->
+Original course: [epicweb-dev/mcp-fundamentals](https://github.com/epicweb-dev/mcp-fundamentals), by [Kent C. Dodds](https://kentcdodds.com). Original course and lesson licence: GPL-3.0-only; see [LICENSE](LICENSE). Original media remains on [EpicAI.pro](https://www.epicai.pro/). Host implementation: [IcodeNet/Icode-workshop](https://github.com/IcodeNet/Icode-workshop).

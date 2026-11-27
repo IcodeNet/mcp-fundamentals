@@ -1,0 +1,299 @@
+[
+  {
+    "path": "exercises/01.ping/01.problem.connect",
+    "seedExit": null,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed (1)",
+      "Fatal error in main(): Error: Not implemented",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Ping",
+      "McpError: MCP error -32000: Connection closed"
+    ]
+  },
+  {
+    "path": "exercises/01.ping/01.solution.connect",
+    "seedExit": null,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  1 passed (1)"
+    ]
+  },
+  {
+    "path": "exercises/02.tools/01.problem.simple",
+    "seedExit": null,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  2 failed (2)",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Tool Definition",
+      " FAIL  src/index.test.ts > Tool Call",
+      "Error: 🚨 Tools capability required. Register an \"add\" tool that hardcodes 1 + 2 = 3. MCP error -32601: Method not found"
+    ]
+  },
+  {
+    "path": "exercises/02.tools/01.solution.simple",
+    "seedExit": null,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  2 passed (2)"
+    ]
+  },
+  {
+    "path": "exercises/02.tools/02.problem.args",
+    "seedExit": null,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  2 failed | 1 passed (3)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/02.tools/02.problem.args/src/index.test.ts,title=src/index.test.ts > Tool Definition,line=39,column=21::Error: 🚨 Tool schema update required. Add firstNumber and secondNumber parameters to the \"add\" tool. expected { name: 'add', title: 'Add', …(2) } to deeply equal ObjectContaining{…}%0A ❯ src/index.test.ts:39:21%0A%0A",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/02.tools/02.problem.args/src/index.test.ts,title=src/index.test.ts > Tool Call with Different Numbers,line=126,column=18::Error: 🚨 Dynamic tool calculation required. Tool should calculate arguments, not return hardcoded values. expected { content: [ { type: 'text', …(1) } ] } to deeply equal ObjectContaining{…}%0A ❯ src/index.test.ts:126:18%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Tool Definition",
+      "Error: 🚨 Tool schema update required. Add firstNumber and secondNumber parameters to the \"add\" tool. expected { name: 'add', title: 'Add', …(2) } to deeply equal ObjectContaining{…}",
+      " FAIL  src/index.test.ts > Tool Call with Different Numbers",
+      "Error: 🚨 Dynamic tool calculation required. Tool should calculate arguments, not return hardcoded values. expected { content: [ { type: 'text', …(1) } ] } to deeply equal ObjectContaining{…}"
+    ]
+  },
+  {
+    "path": "exercises/02.tools/02.solution.args",
+    "seedExit": null,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  3 passed (3)"
+    ]
+  },
+  {
+    "path": "exercises/02.tools/03.problem.errors",
+    "seedExit": null,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 3 passed (4)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/02.tools/03.problem.errors/src/index.test.ts,title=src/index.test.ts > Tool Call - Error with Negative Second Number,line=134,column=9::Error: 🚨 Tool should return error response when secondNumber is negative, but returned normal response instead. AssertionError: expected { content: [ { type: 'text', …(1) } ] } to deeply equal ObjectContaining{…}%0A ❯ src/index.test.ts:134:9%0A%0A",
+      "🚨 Expected: Tool should return isError: true with message about negative numbers",
+      "🚨   3. The MCP SDK will automatically set isError: true",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Tool Call - Error with Negative Second Number",
+      "Error: 🚨 Tool should return error response when secondNumber is negative, but returned normal response instead. AssertionError: expected { content: [ { type: 'text', …(1) } ] } to deeply equal ObjectContaining{…}"
+    ]
+  },
+  {
+    "path": "exercises/02.tools/03.solution.errors",
+    "seedExit": null,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  4 passed (4)"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/01.problem.simple",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  2 failed | 2 passed (4)",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Resource List",
+      " FAIL  src/index.test.ts > Tags Resource Read",
+      "Error: 🚨 Resources capability required. Register a \"tags\" resource that returns all tags from the database. MCP error -32601: Method not found"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/01.solution.simple",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  4 passed (4)"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/02.problem.template",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  2 failed | 2 passed (4)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/03.resources/02.problem.template/src/index.test.ts,title=src/index.test.ts > Resource Templates List,line=107,column=2::Error: 🚨 No resource templates found - this exercise requires implementing parameterized resources like epicme://entries/{id}%0A ❯ invariant ../../../node_modules/@epic-web/invariant/dist/index.js:25:15%0A ❯ src/index.test.ts:107:2%0A%0A",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/03.resources/02.problem.template/src/index.test.ts,title=src/index.test.ts > Resource Template Read - Entry,line=223,column=10::Error: 🚨 Resource template reading not implemented - need to handle parameterized URIs like epicme://entries/1. McpError: MCP error -32602: MCP error -32602: Resource epicme://entries/1 not found%0A ❯ src/index.test.ts:223:10%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Resource Templates List",
+      "Error: 🚨 No resource templates found - this exercise requires implementing parameterized resources like epicme://entries/{id}",
+      " FAIL  src/index.test.ts > Resource Template Read - Entry",
+      "Error: 🚨 Resource template reading not implemented - need to handle parameterized URIs like epicme://entries/1. McpError: MCP error -32602: MCP error -32602: Resource epicme://entries/1 not found"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/02.solution.template",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  4 passed (4)"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/03.problem.list",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 4 passed (5)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/03.resources/03.problem.list/src/index.test.ts,title=src/index.test.ts > Resource List - Tags,line=193,column=2::Error: 🚨 No parameterized tag resources found - the resource template list callback should return individual tags%0A ❯ invariant ../../../node_modules/@epic-web/invariant/dist/index.js:25:15%0A ❯ src/index.test.ts:193:2%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Resource List - Tags",
+      "Error: 🚨 No parameterized tag resources found - the resource template list callback should return individual tags"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/03.solution.list",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  5 passed (5)"
+    ]
+  },
+  {
+    "path": "exercises/03.resources/04.problem.completion",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 2 passed (3)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/03.resources/04.problem.completion/src/index.test.ts,title=src/index.test.ts > Resource Template Completions,line=197,column=10::Error: 🚨 Resource template completion not working - check capability declaration and complete callback implementation. Error: 🚨 Completion should return at least one matching result for id=\"1\"%0A ❯ src/index.test.ts:197:10%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Resource Template Completions",
+      "Error: 🚨 Resource template completion not working - check capability declaration and complete callback implementation. Error: 🚨 Completion should return at least one matching result for id=\"1\""
+    ]
+  },
+  {
+    "path": "exercises/03.resources/04.solution.completion",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  3 passed (3)"
+    ]
+  },
+  {
+    "path": "exercises/04.resource-tools/01.problem.embedded",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 2 passed (3)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/04.resource-tools/01.problem.embedded/src/index.test.ts,title=src/index.test.ts > Embedded Resource in Tool Response,line=223,column=9::Error: 🚨 get_entry tool should return embedded resource content type. Error: Tool response should include embedded resource content type%0A ❯ src/index.test.ts:223:9%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Embedded Resource in Tool Response",
+      "Error: 🚨 get_entry tool should return embedded resource content type. Error: Tool response should include embedded resource content type"
+    ]
+  },
+  {
+    "path": "exercises/04.resource-tools/01.solution.embedded",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  3 passed (3)"
+    ]
+  },
+  {
+    "path": "exercises/04.resource-tools/02.problem.linked",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 2 passed (3)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/04.resource-tools/02.problem.linked/src/index.test.ts,title=src/index.test.ts > Resource Link in Tool Response,line=128,column=2::Error: 🚨 Resource link for created tag not found in list_tags response%0A ❯ invariant ../../../node_modules/@epic-web/invariant/dist/index.js:25:15%0A ❯ src/index.test.ts:128:2%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Resource Link in Tool Response",
+      "Error: 🚨 Resource link for created tag not found in list_tags response"
+    ]
+  },
+  {
+    "path": "exercises/04.resource-tools/02.solution.linked",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  3 passed (3)"
+    ]
+  },
+  {
+    "path": "exercises/05.prompts/01.problem.prompts",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  2 failed | 2 passed (4)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/05.prompts/01.problem.prompts/src/index.test.ts,title=src/index.test.ts > Prompts List,line=160,column=10::Error: 🚨 Prompts capability not declared - add \"prompts\" to server capabilities and implement prompt handlers. McpError: MCP error -32601: Method not found%0A ❯ src/index.test.ts:160:10%0A%0A",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/05.prompts/01.problem.prompts/src/index.test.ts,title=src/index.test.ts > Prompt Get,line=236,column=10::Error: 🚨 Prompt get functionality not implemented - add prompts capability and a prompt handler. McpError: MCP error -32601: Method not found%0A ❯ src/index.test.ts:236:10%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Prompts List",
+      "Error: 🚨 Prompts capability not declared - add \"prompts\" to server capabilities and implement prompt handlers. McpError: MCP error -32601: Method not found",
+      " FAIL  src/index.test.ts > Prompt Get",
+      "Error: 🚨 Prompt get functionality not implemented - add prompts capability and a prompt handler. McpError: MCP error -32601: Method not found"
+    ]
+  },
+  {
+    "path": "exercises/05.prompts/01.solution.prompts",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  4 passed (4)"
+    ]
+  },
+  {
+    "path": "exercises/05.prompts/02.problem.optimized-prompt",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 3 passed (4)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/05.prompts/02.problem.optimized-prompt/src/index.test.ts,title=src/index.test.ts > Optimized Prompt with Embedded Resources,line=256,column=9::Error: 🚨 Optimized prompt should embed resource data directly, not instruct LLM to fetch it. Error: 🚨 Optimized prompt should have multiple messages - instructions plus embedded data%0A ❯ src/index.test.ts:256:9%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Optimized Prompt with Embedded Resources",
+      "Error: 🚨 Optimized prompt should embed resource data directly, not instruct LLM to fetch it. Error: 🚨 Optimized prompt should have multiple messages - instructions plus embedded data"
+    ]
+  },
+  {
+    "path": "exercises/05.prompts/02.solution.optimized-prompt",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  4 passed (4)"
+    ]
+  },
+  {
+    "path": "exercises/05.prompts/03.problem.completion",
+    "seedExit": 0,
+    "exitCode": 1,
+    "summary": [
+      " Test Files  1 failed (1)",
+      "      Tests  1 failed | 3 passed (4)",
+      "::error file=/home/runner/work/mcp-fundamentals/mcp-fundamentals/baseline/exercises/05.prompts/03.problem.completion/src/index.test.ts,title=src/index.test.ts > Prompt Argument Completion,line=264,column=10::Error: 🚨 Prompt argument completion not working - check capability declaration and completable() usage. Error: 🚨 Prompt completion should return at least one matching result for value=\"1\"%0A ❯ src/index.test.ts:264:10%0A%0A",
+      "⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+      " FAIL  src/index.test.ts > Prompt Argument Completion",
+      "Error: 🚨 Prompt argument completion not working - check capability declaration and completable() usage. Error: 🚨 Prompt completion should return at least one matching result for value=\"1\""
+    ]
+  },
+  {
+    "path": "exercises/05.prompts/03.solution.completion",
+    "seedExit": 0,
+    "exitCode": 0,
+    "summary": [
+      " Test Files  1 passed (1)",
+      "      Tests  4 passed (4)"
+    ]
+  }
+]

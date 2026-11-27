@@ -1,0 +1,6 @@
+{
+  "courseCommit": "9a5336cc825ae7f502bad57dcd3c89eb362bfe9b",
+  "run": "https://github.com/IcodeNet/mcp-fundamentals/actions/runs/46006634853",
+  "node": "24",
+  "method": "Original course npm install --ignore-scripts, original package test scripts with --run; seed scripts run before assessment."
+}

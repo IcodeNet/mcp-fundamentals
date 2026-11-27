@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "format": "epic",
+  "title": "MCP Fundamentals \u2014 Icode Workshop",
+  "testScript": "test",
+  "testArgs": [
+    "--run"
+  ],
+  "seed": "src/db/seed.ts",
+  "inspector": true
+}
