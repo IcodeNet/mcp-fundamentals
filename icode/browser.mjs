@@ -9,6 +9,7 @@ const closed=once(child,'close');let logs='';for(const stream of [child.stdout,c
 let browser;
 const evidence=[];
 async function ready(url){for(let i=0;i<100;i++){try{if((await fetch(url,{signal:AbortSignal.timeout(300)})).ok)return;}catch{}await new Promise(r=>setTimeout(r,200));}throw new Error('Server unavailable: '+logs);}
+async function until(check,message){for(let i=0;i<100;i++){if(await check())return;await new Promise(r=>setTimeout(r,100));}throw new Error(message);}
 async function released(port){const server=createServer();await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});await new Promise(r=>server.close(r));}
 try {
  await mkdir('acceptance-results',{recursive:true});
@@ -17,13 +18,23 @@ try {
  const page=await browser.newPage({viewport:{width:1440,height:1100}});page.setDefaultTimeout(20000);
  await page.goto('http://127.0.0.1:5173/');
  await page.locator('button.exercise').first().waitFor();assert.equal(await page.locator('button.exercise').count(),13);
- await page.locator('.lesson-panel').getByRole('link',{name:'src/index.ts',exact:true}).first().click();
- const editor=page.getByRole('textbox',{name:'Playground code editor'});await editor.waitFor();
- const saved=await readFile('.workshop/playgrounds/01/src/index.ts','utf8');
- await writeFile('.workshop/playgrounds/01/src/index.ts',saved+'\n// external editor acceptance\n');
+ // Select lesson 01 first: no lesson panel exists until an exercise is chosen.
+ await page.locator('button.exercise').first().click();
+ await page.locator('.heading h1').waitFor();
+ const fileLink=page.locator('.lesson-panel').getByRole('link',{name:'src/index.ts',exact:true}).first();
+ const editor=page.getByRole('textbox',{name:'Playground code editor'});
+ // The link is ignored while the workspace is still loading, so retry until the editor opens.
+ for(let i=0;!(await editor.isVisible());i++){if(i===20)throw new Error('Lesson file link did not open the editor');await fileLink.click();await page.waitForTimeout(500);}
+ const playgroundFile='.workshop/playgrounds/01/src/index.ts';
+ const saved=await readFile(playgroundFile,'utf8');
+ await until(async()=>(await editor.inputValue())===saved,'Lesson link must open the playground src/index.ts');
+ try {
+  await writeFile(playgroundFile,saved+'\n// external editor acceptance\n');
+  await page.getByRole('button',{name:'Reload file',exact:true}).click();
+  await until(async()=>/external editor acceptance/.test(await editor.inputValue()),'Reload file must show the external edit');
+ } finally {await writeFile(playgroundFile,saved);}
  await page.getByRole('button',{name:'Reload file',exact:true}).click();
- assert.match(await editor.inputValue(),/external editor acceptance/);
- await writeFile('.workshop/playgrounds/01/src/index.ts',saved);
+ await until(async()=>(await editor.inputValue())===saved,'Restored file must reload');
  evidence.push('Lesson file link opens editor; external edits reload without changing authored sources');
 
  for(let index=0;index<13;index++){
