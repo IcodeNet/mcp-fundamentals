@@ -16,6 +16,9 @@ const {writeProjectFile,readProjectFile}=await get('packages/web/files.mjs');
 const {updateProgress,readProgress}=await get('packages/web/course.mjs');
 const baseline=JSON.parse(await readFile(process.env.BASELINE_RESULTS||join(root,'acceptance-results/baseline.json'),'utf8'));
 const steps=discoverSteps(root);assert.equal(steps.length,13);
+const lock=JSON.parse(await readFile(join(root,'package-lock.json'),'utf8'));
+assert.equal(Object.keys(lock.packages).filter(path=>/@epic-web\/(workshop-app|workshop-utils|mcp-dev)|node_modules\/epicshop$/.test(path)).length,0,'Course must not retain the Epic workshop engine');
+
 const documents=new Set(),results=[];
 const hash=s=>createHash('sha256').update(s).digest('hex');
 async function sourceHashes(dir){const result={};for(const name of await readdir(dir,{recursive:true})){

@@ -2,7 +2,7 @@ import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {createServer} from 'node:net';
 const child=spawn(process.execPath,['icode/run.mjs','start'],{stdio:['ignore','pipe','pipe']});
 const closed=once(child,'close');let logs='';for(const stream of [child.stdout,child.stderr])stream.on('data',x=>{logs=(logs+x).slice(-8000);});
@@ -17,6 +17,15 @@ try {
  const page=await browser.newPage({viewport:{width:1440,height:1100}});page.setDefaultTimeout(20000);
  await page.goto('http://127.0.0.1:5173/');
  await page.locator('button.exercise').first().waitFor();assert.equal(await page.locator('button.exercise').count(),13);
+ await page.locator('.lesson-panel').getByRole('link',{name:'src/index.ts',exact:true}).first().click();
+ const editor=page.getByRole('textbox',{name:'Playground code editor'});await editor.waitFor();
+ const saved=await readFile('.workshop/playgrounds/01/src/index.ts','utf8');
+ await writeFile('.workshop/playgrounds/01/src/index.ts',saved+'\n// external editor acceptance\n');
+ await page.getByRole('button',{name:'Reload file',exact:true}).click();
+ assert.match(await editor.inputValue(),/external editor acceptance/);
+ await writeFile('.workshop/playgrounds/01/src/index.ts',saved);
+ evidence.push('Lesson file link opens editor; external edits reload without changing authored sources');
+
  for(let index=0;index<13;index++){
   await page.locator('button.exercise').nth(index).click();
   await page.locator('.heading h1').waitFor();
