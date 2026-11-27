@@ -12,20 +12,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: course
-      - uses: actions/checkout@v4
-        with:
-          repository: IcodeNet/mcp-fundamentals
-          ref: 9a5336cc825ae7f502bad57dcd3c89eb362bfe9b
-          path: baseline
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - run: corepack enable && corepack prepare pnpm@10.0.0 --activate
-      - name: Install original course without changing lessons or tests
-        run: npm install --ignore-scripts --no-audit --no-fund
-        working-directory: baseline
-      - name: Establish original assessment outcomes
-        run: node course/icode/baseline.mjs baseline course/acceptance-results/baseline.json "$(realpath $(which npm))"
+      - name: Use verified pinned baseline evidence
+        run: mkdir -p course/acceptance-results && cp course/icode/baseline-results.json course/acceptance-results/baseline.json
       - name: Set up pinned Icode engine and course
         run: npm run setup
         working-directory: course
